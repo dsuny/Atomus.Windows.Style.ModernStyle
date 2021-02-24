@@ -1,0 +1,191 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Common.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style x:Key="textblock_base" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+    </Style>
+    
+    <Style x:Key="textblock_toolbar_combobox_text" TargetType="TextBlock" BasedOn="{StaticResource textblock_base}">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+    </Style>
+
+    <Style x:Key="textbox_base" TargetType="TextBox">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+    </Style>
+    <Style x:Key="textblock_toolbar_combobox_editable_text" TargetType="TextBox" BasedOn="{StaticResource textbox_base}">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="Green"/>
+        <Setter Property="Background" Value="#FF3F3F3F"/>
+        <Setter Property="Focusable" Value="True"/>
+        <Setter Property="Visibility" Value="Hidden"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <DataTemplate x:Key="datatemplate_toolbar_combobox">
+        <DockPanel>
+            <Image Margin="28,4,0,6" Source="{Binding Image}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid Margin="10,6,0,4" Height="50" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Style="{DynamicResource textblock_toolbar_combobox_text}"/>
+            </Grid>
+        </DockPanel>
+    </DataTemplate>
+
+    <ControlTemplate x:Key="togglebutton_toolbar_combobox" TargetType="{x:Type ToggleButton}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>            
+            <Border Grid.Column="0" CornerRadius="0" />
+            <Border x:Name="Border"  Grid.ColumnSpan="2" CornerRadius="0"/>
+            <Image x:Name="Arrow" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="24" Height="24" Source="{DynamicResource Image_Toolbar_D}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="true">                
+                <Setter Property="Source" TargetName="Arrow" Value="{DynamicResource Image_Toolbar_U}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="textbox_toolbar_editable" TargetType="{x:Type TextBox}">
+        <Border x:Name="PART_ContentHost" Focusable="False" Background="Red"/>
+    </ControlTemplate>
+
+    <Style x:Key="comboboxitem_toolbar" TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">                    
+                    <Border Name="Bd" SnapsToDevicePixels="true">
+                        <Grid >
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Border x:Name="Bd_S" Width="4" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="{DynamicResource Brush_Scroll_Item_S}" Visibility="Hidden"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" TargetName="Bd" Value="#888888"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Brush_Scroll_Item_O}"/>
+                            <Setter Property="Visibility" TargetName="Bd_S" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource Brush_Scroll_Item_O}"/>                            
+                        </Trigger>                                           
+                    </ControlTemplate.Triggers>                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="combobox_toolbar" TargetType="{x:Type ComboBox}">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="ItemTemplate" Value="{DynamicResource datatemplate_toolbar_combobox}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid>
+                        <ToggleButton Name="ToggleButton" Grid.Column="2"  Focusable="false" ClickMode="Press" Margin="0,0,24,0"
+                                      Template="{StaticResource togglebutton_toolbar_combobox}"
+                                      IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" />
+
+                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Width="230" Margin="4,0,0,0"
+                                          Content="{TemplateBinding SelectionBoxItem}"
+                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+
+                        <TextBox x:Name="PART_EditableTextBox"
+                                 Style="{StaticResource textblock_toolbar_combobox_editable_text}"
+                                 Template="{StaticResource textbox_toolbar_editable}"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}" />
+
+                        <Popup Name="Popup" Placement="Bottom" AllowsTransparency="True" PopupAnimation="Slide" Focusable="False"
+                               IsOpen="{TemplateBinding IsDropDownOpen}">
+                            <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border x:Name="DropDownBorder" Background="{DynamicResource Brush_Menu_Back}" BorderThickness="1" BorderBrush="{DynamicResource Brush_Menu_Border}" CornerRadius="5"/>
+                                <ScrollViewer Template="{DynamicResource ScrollViewer_Base}" Margin="1,0,0,0" SnapsToDevicePixels="True" Padding="0,30,0,30">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#888888"/>
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                        <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                            <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="5"/>
+                            <Setter TargetName="DropDownBorder" Property="Margin" Value="0,0,0,0"/>
+                        </Trigger>
+                        <Trigger Property="IsEditable"  Value="true">
+                            <Setter Property="IsTabStop" Value="false"/>
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="textblock_toolbar_text" TargetType="TextBlock" BasedOn="{StaticResource textblock_base}">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="18"/>
+        <Setter Property="Margin" Value="0,8,0,0"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+    
+    <Style x:Key="listboxitem_toolbar" TargetType="ListBoxItem">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Name="Border" Padding="0" Margin="0" SnapsToDevicePixels="true" Visibility="{Binding Visibility}">
+                        <StackPanel Margin="0">
+                            <Image x:Name="Image" Width="30" Height="30" Source="{Binding Image}" />
+                            <TextBlock Text="{Binding Text}" Style="{DynamicResource textblock_toolbar_text}"/>                            
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <!--<Setter TargetName="Image" Property="Source" Value="{Binding ImageOver}"/>-->
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource Brush_Menu_Border}"/>
+                        </Trigger>                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,199 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Common.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="image_window_id" TargetType="Image">        
+        <Setter Property="Source" Value="{DynamicResource Image_ID}" />
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="Width" Value="24"/>
+        <Setter Property="Height" Value="24"/>
+    </Style>
+
+    <Style x:Key="textblock_base" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily_Noto}" />
+    </Style>
+    <Style x:Key="textblock_window" TargetType="TextBlock" BasedOn="{StaticResource textblock_base}">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush_White}" />
+        <Setter Property="Padding" Value="0,2,0,0"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+
+    <Style x:Key="button_window_base" TargetType="Button">
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+        <Setter Property="Margin" Value="2,0,2,0"/>
+    </Style>
+    <Style x:Key="button_window_minimize" TargetType="Button" BasedOn="{StaticResource button_window_base}">
+        <Setter Property="ToolTip" Value="Minimize"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="LayoutRoot" Background="Transparent" Width="24" Height="24">
+                        <Image x:Name="image" Source="{DynamicResource Image_Minimize_N}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Minimize_O}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Minimize_S}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Minimize_D}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="button_window_restore" TargetType="Button" BasedOn="{StaticResource button_window_base}">
+        <Setter Property="ToolTip" Value="Restore"/>
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="LayoutRoot" Background="Transparent" Width="24" Height="24">
+                        <Image x:Name="image" Source="{DynamicResource Image_Previous_N}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Previous_O}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Previous_S}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Previous_D}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="button_window_maximize" TargetType="Button" BasedOn="{StaticResource button_window_base}">
+        <Setter Property="ToolTip" Value="Maximize"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="LayoutRoot" Background="Transparent" Width="24" Height="24">
+                        <Image x:Name="image" Source="{DynamicResource Image_Maximize_N}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Maximize_O}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Maximize_S}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Maximize_D}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="button_window_close" TargetType="Button" BasedOn="{StaticResource button_window_base}">
+        <Setter Property="ToolTip" Value="Close"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="LayoutRoot" Background="Transparent" Width="24" Height="24">
+                        <Image x:Name="image" Source="{DynamicResource Image_Close_N}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Close_O}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Close_S}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="LayoutRoot" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="image" Property="Source" Value="{DynamicResource Image_Close_D}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="button_window_tabitem_close" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Image x:Name="image1" Source="/Atomus.Windows.Style.ModernStyle;component/Images/ModernDark/Window/icon-tab-close-n.png" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="image1" Property="Source" Value="/Atomus.Windows.Style.ModernStyle;component/Images/ModernDark/Window/icon-tab-close-o.png"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="image1" Property="Source" Value="/Atomus.Windows.Style.ModernStyle;component/Images/ModernDark/Window/icon-tab-close-s.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="tabItem_window" TargetType="{x:Type TabItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid Name="Panel" Height="38" Background="Transparent" Margin="-2,-3,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="34"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <ContentPresenter x:Name="ContentSite" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="8,0,0,0"/>
+
+                        <TextBlock x:Name="line" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Height="4" Margin="1,-4,0,0" />
+
+                        <Button x:Name="btn" Grid.Row="0" Grid.Column="1" Width="19" Height="19" Background="Red" Margin="1,3,6,0" BorderThickness="0" Style="{StaticResource button_window_tabitem_close}">
+                            <!--<Button.Style>
+                                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource button_window_tabitem_close}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Image x:Name="image1" Source="/Atomus.Windows.Browser.ModernBrowser;component/icon-tab-close-n.png" />
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>-->
+                        </Button>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <!--<Setter TargetName="Panel" Property="Background" Value="LightSkyBlue" />-->
+                            <Setter TargetName="line" Property="Background" Value="#558bdc" />
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="line" Property="Background" Value="#cad3df" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

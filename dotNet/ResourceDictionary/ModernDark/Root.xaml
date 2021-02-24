@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Common.xaml" />        
+        <ResourceDictionary Source="Window/Window.xaml" />
+        <ResourceDictionary Source="Login/Login.xaml" />
+        <ResourceDictionary Source="Toolbar/Toolbar.xaml" />
+        <ResourceDictionary Source="Menu/Menu.xaml" />
+        <ResourceDictionary Source="Avalon/Themes/Generic.xaml"/>
+        <ResourceDictionary Source="DevExpress/DevExpressRoot.xaml"/>        
+    </ResourceDictionary.MergedDictionaries>    
+    
+</ResourceDictionary>

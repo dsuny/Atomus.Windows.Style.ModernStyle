@@ -1,0 +1,132 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="textblock_base" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+    </Style>
+
+
+    <Style x:Key="textblock_searchactionbutton" TargetType="TextBlock" BasedOn="{StaticResource textblock_base}">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFD4E0F1" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+
+    <Style x:Key="textblock_actionbutton" TargetType="TextBlock" BasedOn="{StaticResource textblock_base}">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="textblock_placeholder" TargetType="TextBlock" BasedOn="{StaticResource textblock_base}">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="Foreground" Value="Transparent" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+
+    
+    
+    
+    
+    
+
+
+
+
+    <Style x:Key="text_normal_medium_11" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+    </Style>
+
+    <!--ComboBoxToolbar.xaml    cmbTemplate-->
+    <Style x:Key="text_normal_medium_15" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+    </Style>
+
+    <!--App.xaml    UserID-->
+    <Style x:Key="text_normal_right_14" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="TextAlignment" Value="Right" />
+    </Style>
+
+    <!--App.xaml    Title-->
+    <Style x:Key="text_normal_center_14" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+
+
+    <Style x:Key="LIST_TEXT_12" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="btn/12pt" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="Foreground" Value="#FF182233" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="text_w_100%" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFD4E0F1" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="text_w_55%" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FFFFFFFF" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="title/11pt" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Foreground" Value="#FF6A7587" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="title/12pt" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="NotoSansCJKkr" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="#FF182233" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+</ResourceDictionary>
